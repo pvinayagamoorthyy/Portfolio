@@ -1,46 +1,103 @@
+:host {
+  /* CSS Custom Properties for theming */
+  --sidebar-bg: rgba(255, 255, 255, 0.9);
+  --sidebar-border: rgba(226, 232, 240, 0.6);
+  --sidebar-shadow: rgba(71, 85, 105, 0.15);
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #475569;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+  --accent-hover: #1d4ed8;
+  --glass-bg: rgba(248, 250, 252, 0.8);
+  --glass-border: rgba(226, 232, 240, 0.6);
+  --glass-shadow: rgba(71, 85, 105, 0.1);
+  --mobile-bg: #f7faff;
+  --mobile-accent: #4f8cff;
+  --mobile-active: #e0f0ff;
+  --mobile-active-text: #005792;
+}
+
 .sidebar {
   width: 100%;
   padding: 32px 24px;
-  background: #f7faff !important;
-  border-right: 1px solid #e5e5e5;
+  background: var(--sidebar-bg);
+  backdrop-filter: blur(20px);
   text-align: center;
-  font-family: 'Segoe UI', sans-serif;
-  color: #333;
-  position: relative;
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+  box-shadow: 0 20px 60px var(--sidebar-shadow);
+  border-radius: 20px;
+  border: 1px solid var(--sidebar-border);
+  overflow-y: visible;
+  height: 100%;
   min-height: 100vh;
-  box-shadow: 0 2px 24px rgba(79, 140, 255, 0.07);
+  display: flex;
+  flex-direction: column;
+  
+  /* Focus management - remove problematic outline */
+  &:focus-within {
+    outline: none;
+  }
+  
+  /* Remove any default browser outlines */
+  &:focus {
+    outline: none;
+  }
 }
 
 /* Avatar */
 .profile-pic-glass {
-  width: 130px;
-  height: 130px;
-  margin: 0 auto 16px;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 4px 24px rgba(79, 140, 255, 0.13);
-  border: 4px solid #fff;
-  background: rgba(255,255,255,0.35);
-  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2), 0 0 0 4px rgba(59, 130, 246, 0.1);
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(226, 232, 240, 0.9));
+  backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.3), 0 0 0 4px rgba(59, 130, 246, 0.2);
+  }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    transition: opacity 0.3s ease;
+    
+    &:focus {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 2px;
+    }
   }
 }
 
 /* Name and Role */
 .name {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  margin-top: 6px;
-  color: #1a1a1a;
-  margin-bottom: 6px;
+  margin-top: 8px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  &:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
 }
 
 .roles {
@@ -49,30 +106,47 @@
 
 .role {
   font-size: 15px;
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.4;
   margin: 2px 0;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: var(--accent-primary);
+  }
 }
 
 /* Contact */
 .info {
   font-size: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 
   p {
-    margin: 10px 0;
+    margin: 12px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    color: var(--text-muted);
 
     a {
-      color: #007acc;
+      color: var(--accent-primary);
       text-decoration: none;
       font-weight: 500;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+      padding: 2px 4px;
 
       &:hover {
+        color: var(--accent-hover);
         text-decoration: underline;
+        background: rgba(59, 130, 246, 0.1);
+      }
+      
+      &:focus {
+        outline: 2px solid var(--accent-primary);
+        outline-offset: 2px;
       }
     }
   }
@@ -90,36 +164,55 @@
 .social-link {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #007acc;
+  gap: 10px;
+  color: var(--text-muted);
   font-weight: 600;
   text-decoration: none;
-  font-size: 15px;
-  background: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  background: var(--glass-bg);
   border-radius: 12px;
-  padding: 8px 18px;
-  transition: background 0.2s, color 0.2s;
-  box-shadow: 0 2px 8px rgba(79, 140, 255, 0.08);
+  padding: 12px 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
 
   &:hover {
-    background: #e0f0ff;
-    color: #005792;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-hover);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-hover);
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px var(--glass-shadow);
   }
 }
 
 /* MOBILE STYLES - Sidebar always visible at top */
 @media (max-width: 768px) {
   .sidebar {
-    position: relative;      /* ✅ Normal document flow */
-    width: 100%;            /* ✅ Full width */
-    min-height: auto;       /* ✅ Auto height */
-    padding: 20px 16px;     /* ✅ Reduced padding for mobile */
-    background: #f7faff !important;
-    border-right: none;     /* ✅ Remove right border */
-    border-bottom: 1px solid #e5e5e5; /* ✅ Add bottom border */
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    padding: 20px 16px;
+    background: var(--mobile-bg);
+    border-right: none;
+    border-bottom: 1px solid var(--sidebar-border);
     box-shadow: 0 2px 16px rgba(79, 140, 255, 0.13);
-    border-radius: 0 0 12px 12px; /* ✅ Rounded bottom corners */
+    border-radius: 0 0 12px 12px;
     margin-bottom: 0;
+    top: 0;
+    height: auto;
   }
 
   .profile-pic-glass {
@@ -140,9 +233,9 @@
   }
 
   .role {
-    font-size: 13px;        /* ✅ Smaller role text */
+    font-size: 13px;
     margin: 2px 0;
-    color: #4f8cff;
+    color: var(--mobile-accent);
     font-weight: 500;
   }
 
@@ -162,13 +255,13 @@
   }
 
   .social-link {
-    font-size: 13px;        /* ✅ Smaller social links */
+    font-size: 13px;
     padding: 8px 16px;
     border-radius: 10px;
     
     &:active {
-      background: #e0f0ff;
-      color: #005792;
+      background: var(--mobile-active);
+      color: var(--mobile-active-text);
     }
   }
 }

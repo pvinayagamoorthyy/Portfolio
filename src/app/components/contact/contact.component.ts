@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 // Add this import for EmailJS
 import emailjs from 'emailjs-com';
@@ -19,11 +20,6 @@ export class ContactComponent {
   message = '';
   sent = false;
 
-  // TODO: Replace these with your actual EmailJS credentials
-  EMAILJS_SERVICE_ID = 'service_ek7sure';
-  EMAILJS_TEMPLATE_ID = 'template_ac8hovo';
-  EMAILJS_USER_ID = 'AJuWDj7FLsV45V_pP';
-
   sendMessage() {
     const templateParams = {
       from_name: this.name,
@@ -32,10 +28,10 @@ export class ContactComponent {
     };
 
     emailjs.send(
-      this.EMAILJS_SERVICE_ID,
-      this.EMAILJS_TEMPLATE_ID,
+      environment.emailjs.serviceId,
+      environment.emailjs.templateId,
       templateParams,
-      this.EMAILJS_USER_ID
+      environment.emailjs.userId
     ).then(
       () => {
         this.sent = true;

@@ -19,37 +19,20 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.checkMobile();
     
-    // Block right-click
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
-
-    // Block F12, Ctrl+Shift+I/J/C/U, Ctrl+U
+    // Optional: Disable right-click context menu (less aggressive)
+    // document.addEventListener('contextmenu', (e) => e.preventDefault());
+    
+    // Optional: Show a friendly message instead of blocking completely
     document.addEventListener('keydown', (e) => {
       if (
         e.key === 'F12' ||
-        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
-        (e.ctrlKey && e.key.toUpperCase() === 'U')
+        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase()))
       ) {
+        // Just prevent the default action, don't be aggressive
         e.preventDefault();
-        e.stopPropagation();
+        console.log('👋 Hi there! Thanks for checking out my portfolio code!');
       }
     });
-
-    // Detect DevTools open (basic)
-    let devtoolsOpen = false;
-    const threshold = 160;
-    setInterval(() => {
-      const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-      const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-      if (widthThreshold || heightThreshold) {
-        if (!devtoolsOpen) {
-          devtoolsOpen = true;
-          document.body.innerHTML = '';
-        }
-      } else {
-        devtoolsOpen = false;
-      }
-    }, 500);
-    
   }
 
   @HostListener('window:resize')

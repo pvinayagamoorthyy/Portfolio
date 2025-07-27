@@ -1,38 +1,59 @@
 <!-- Single Sidebar for Both Mobile and Desktop -->
-<aside class="sidebar">
+<aside class="sidebar" role="complementary" aria-label="Profile information">
   <!-- Profile Picture -->
   <div class="profile-pic-glass">
-    <img src="assets/images/tech-avatar.png" alt="Vinayaga Moorthi Avatar" />
+    <img 
+      [src]="avatarError ? defaultAvatar : profileData.avatar" 
+      [alt]="profileData.name + ' Avatar'"
+      (error)="onAvatarError()"
+      loading="lazy" />
   </div>
+  
   <!-- Name and Roles -->
-  <h2 class="name">Vinayaga Moorthi P</h2>
-  <div class="roles">
-    <p class="role">SQL Developer</p>
-    <p class="role">Data Analyst</p>
-    <p class="role">ETL & BI Reporting Specialist</p>
+  <h2 class="name">{{ profileData.name }}</h2>
+  <div class="roles" role="list" aria-label="Professional roles">
+    <p class="role" role="listitem" *ngFor="let role of profileData.roles">{{ role }}</p>
   </div>
+  
   <!-- Contact Info -->
-  <div class="info">
+  <div class="info" role="region" aria-label="Contact information">
     <p>
-      <lucide-icon name="Mail" size="18"></lucide-icon>
-      <a href="mailto:pvinayagamoorthyy@gmail.com">pvinayagamoorthyy&#64;gmail.com</a>
+      <lucide-icon name="Mail" size="18" aria-hidden="true"></lucide-icon>
+      <a 
+        [href]="'mailto:' + profileData.email" 
+        (click)="onEmailClick()"
+        [attr.aria-label]="'Send email to ' + profileData.name"
+        tabindex="0">{{ profileData.email }}</a>
     </p>
     <p>
-      <lucide-icon name="MapPin" size="18"></lucide-icon>
-      Bangalore, India
+      <lucide-icon name="MapPin" size="18" aria-hidden="true"></lucide-icon>
+      <span aria-label="Location">{{ profileData.location }}</span>
     </p>
   </div>
+  
   <!-- Social Links -->
-  <div class="socials">
-    <a href="https://www.linkedin.com/in/pvinayagamoorthi-85834932b"
-       class="social-link hide-on-mobile" target="_blank" rel="noopener noreferrer">
-      <lucide-icon name="Linkedin" size="18"></lucide-icon>
+  <nav class="socials" role="navigation" aria-label="Social media links">
+    <a 
+      [href]="profileData.socialLinks.linkedin"
+       class="social-link hide-on-mobile" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       (click)="onSocialLinkClick('linkedin')"
+       [attr.aria-label]="'Connect with ' + profileData.name + ' on LinkedIn'"
+       tabindex="0">
+      <lucide-icon name="Linkedin" size="18" aria-hidden="true"></lucide-icon>
       Connect on LinkedIn
     </a>
-    <a href="https://github.com/pvinayagamoorthyy"
-       class="social-link hide-on-mobile" target="_blank" rel="noopener noreferrer">
-      <lucide-icon name="Github" size="18"></lucide-icon>
+    <a 
+      [href]="profileData.socialLinks.github"
+       class="social-link hide-on-mobile" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       (click)="onSocialLinkClick('github')"
+       [attr.aria-label]="'View ' + profileData.name + '\'s projects on GitHub'"
+       tabindex="0">
+      <lucide-icon name="Github" size="18" aria-hidden="true"></lucide-icon>
       View on GitHub
     </a>
-  </div>
+  </nav>
 </aside>

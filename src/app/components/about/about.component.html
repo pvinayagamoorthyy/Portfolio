@@ -1,23 +1,25 @@
-<section class="about-wrapper">
-  <div class="about-intro">
-    <h2 class="section-title">About Me</h2>
-    <p class="about-summary">
-      Greetings and welcome! I'm <strong>Vinayaga Moorthi</strong>, your dedicated <strong>SQL Developer</strong> and <strong>Data Analyst</strong> with a passion for turning raw data into powerful business insights.
+<section class="portfolio-wrapper">
+  <div class="page-intro">
+    <h2 class="page-title">About Me</h2>
+    <p class="page-summary">
+      Greetings and welcome! I'm <strong>Vinayaga Moorthi</strong>, your dedicated <strong>SQL Developer</strong>, <strong>Data Analyst</strong> and <strong>ETL & BI Reporting Specialist</strong> with a passion for turning raw data into powerful business insights.
       <br /><br />
       With a strong foundation and hands-on experience, I specialize in building scalable database solutions, optimizing complex queries, and uncovering the stories hidden in your data.
       <br /><br />
       Let's transform information into impact — together.
     </p>
-    <div class="about-divider"></div>
+    <div class="page-divider"></div>
   </div>
 
-  <div class="what-i-do-grid">
-    <div class="card glass-card" *ngFor="let card of cardItems">
-      <h3>
-        <span class="card-icon">{{ card.icon }}</span>
-        {{ card.title }}
-      </h3>
-      <p>{{ card.description }}</p>
+  <div class="content-container">
+    <div class="grid-2-col">
+      <div class="unified-card" *ngFor="let card of cardItems">
+        <h3>
+          <span class="card-icon">{{ card.icon }}</span>
+          {{ card.title }}
+        </h3>
+        <p>{{ card.description }}</p>
+      </div>
     </div>
   </div>
 </section>

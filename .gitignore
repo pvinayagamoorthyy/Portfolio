@@ -18,6 +18,13 @@ yarn-error.log
 .c9/
 *.launch
 .settings/
+
+# Environment files (for security)
+/src/environments/environment.ts
+/src/environments/environment.prod.ts
+.env
+.env.local
+.env.production
 *.sublime-workspace
 
 # Visual Studio Code

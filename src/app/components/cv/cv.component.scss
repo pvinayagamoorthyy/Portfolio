@@ -1,25 +1,129 @@
-.cv-section {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
+/* CV COMPONENT - UNIFIED STYLES */
+
+:root {
+  --accent-color: #3b82f6;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --glass-blur: blur(20px);
+  --card-shadow: 0 20px 60px rgba(71, 85, 105, 0.15);
+  --avatar-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --border-color: rgba(226, 232, 240, 0.6);
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-.section-title {
-  font-size: 32px;
+.portfolio-wrapper {
+  width: 100%; /* Changed from max-width */
+  margin: 0 auto;
+  padding: 60px 20px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-primary);
+  min-height: 500px; /* Fixed min-height */
+  position: relative;
+  box-sizing: border-box;
+}
+
+.page-intro {
+  width: 100%;
   text-align: center;
-  margin-bottom: 40px;
-  color: #222;
-  font-family: 'Poppins', sans-serif;
+  margin-bottom: 48px;
 }
 
-// Timeline
+.page-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  margin-bottom: 0.5em;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.page-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  border-radius: 2px;
+  margin: 24px auto 32px auto;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+.content-container {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.unified-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(71, 85, 105, 0.12);
+  padding: 32px 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  cursor: pointer;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  animation: fadeInUp 0.6s ease-out;
+  min-width: 260px;
+  flex: 1 1 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.unified-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15), 0 8px 32px rgba(71, 85, 105, 0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.unified-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+}
+
+.unified-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+}
+
+/* CV Timeline */
 .cv-timeline {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 36px;
   position: relative;
   margin-left: 30px;
+  box-sizing: border-box;
 }
+
 .cv-timeline:before {
   content: '';
   position: absolute;
@@ -31,16 +135,21 @@
   border-radius: 2px;
   opacity: 0.18;
 }
+
 .cv-timeline-item {
   display: flex;
   align-items: flex-start;
   gap: 24px;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .cv-timeline-item.center {
   justify-content: center;
   align-items: center;
 }
+
 .cv-timeline-icon {
   width: 44px;
   height: 44px;
@@ -56,44 +165,24 @@
   flex-shrink: 0;
 }
 
-.cv-card {
-  background: #f9f9f9;
-  padding: 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  color: #333;
-  min-width: 260px;
-  flex: 1 1 0;
-  position: relative;
-  z-index: 1;
-}
-.cv-card h3 {
-  font-size: 20px;
-  color: #005792;
-  margin-bottom: 12px;
-}
-.cv-card p, .cv-card li {
-  font-size: 14px;
-  line-height: 1.6;
-}
-.cv-card ul {
-  padding-left: 20px;
-}
-
-// Animated Skill Bars
+/* Skill Bars */
 .skill-bar-group {
   display: flex;
   flex-direction: column;
   gap: 14px;
   margin-top: 8px;
+  width: 100%;
 }
+
 .skill-bar {
   display: flex;
   align-items: center;
   gap: 16px;
   font-size: 15px;
   font-weight: 500;
+  width: 100%;
 }
+
 .skill-bar .bar {
   flex: 1;
   height: 10px;
@@ -102,6 +191,7 @@
   overflow: hidden;
   position: relative;
 }
+
 .skill-bar .fill {
   height: 100%;
   background: linear-gradient(90deg, #4f8cff 60%, #2563eb 100%);
@@ -109,6 +199,7 @@
   transition: width 1.2s cubic-bezier(.4,2,.6,1);
 }
 
+/* Download Button */
 .download-btn {
   display: inline-flex;
   align-items: center;
@@ -122,36 +213,91 @@
   gap: 0.5em;
   transition: background 0.3s;
   box-shadow: 0 2px 8px rgba(79, 140, 255, 0.10);
+  justify-content: center;
 }
+
 .download-btn.prominent {
-  background: linear-gradient(90deg, #4f8cff 60%, #2563eb 100%);
+  background: linear-gradient(90deg, #2563eb 60%, #4f8cff 100%);
   font-size: 1.18rem;
   box-shadow: 0 6px 24px rgba(79, 140, 255, 0.18);
 }
+
 .download-btn:hover {
   background: #005f99;
 }
+
 .cv-icon {
   font-size: 1.3em;
   margin-right: 0.4em;
 }
 
-@media (max-width: 700px) {
-  .cv-section {
-    padding: 8px;
+.text-center {
+  text-align: center;
+  width: 100%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.unified-card:nth-child(1) { animation-delay: 0.1s; }
+.unified-card:nth-child(2) { animation-delay: 0.2s; }
+.unified-card:nth-child(3) { animation-delay: 0.3s; }
+.unified-card:nth-child(4) { animation-delay: 0.4s; }
+
+@media (max-width: 900px) {
+  .portfolio-wrapper {
+    padding: 40px 16px;
+    min-height: 400px; /* Consistent min-height */
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .unified-card {
+    padding: 24px 20px;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-wrapper {
+    padding: 24px 12px;
+    min-height: 350px; /* Consistent sizing */
+  }
+  
+  .page-title {
+    font-size: 2.2rem;
+  }
+  
+  .unified-card {
+    padding: 20px 16px;
+    min-height: 160px;
+  }
+  
   .cv-timeline {
     margin-left: 0;
     gap: 24px;
   }
+  
   .cv-timeline:before {
     left: -2px;
   }
+  
   .cv-timeline-item {
     flex-direction: column;
     gap: 10px;
     align-items: stretch;
   }
+  
   .cv-timeline-icon {
     margin-bottom: 6px;
     margin-top: 0;
@@ -159,17 +305,17 @@
 }
 
 @media (max-width: 600px) {
-  :host {
-    display: block;
-    padding: 12px 0;
+  .portfolio-wrapper {
+    padding: 20px 8px;
+    min-height: 300px; /* Consistent sizing */
   }
-  h2 {
-    font-size: 1.2em;
+  
+  .page-title {
+    font-size: 1.8rem;
   }
-  .cv-section {
-    margin-bottom: 16px;
-  }
-  a {
-    word-break: break-all;
+  
+  .unified-card {
+    padding: 18px 14px;
+    min-height: 140px;
   }
 }

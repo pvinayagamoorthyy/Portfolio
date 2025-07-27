@@ -1,17 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+/* Global Font Family Standard */
+:root {
+  --font-primary: 'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  --text-primary: #23272f;
+  --text-secondary: #6b7280;
+}
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #222;
-  line-height: 1.6;
+  font-family: var(--font-primary);
+  color: #23272f;
+  line-height: 1.7;
   margin: 0;
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  color: #1a1a1a;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #181c32;
+  letter-spacing: -0.5px;
 }
 
 @media (max-width: 600px) {

@@ -1,15 +1,21 @@
-<section class="contact-section">
-  <h2>Let's Connect!</h2>
-  <div class="contact-grid">
-    <div class="contact-item contact-form">
-      <h4>💬 Drop Me a Message</h4>
-      <form (ngSubmit)="sendMessage()" #contactForm="ngForm">
-        <input type="text" name="name" [(ngModel)]="name" placeholder="Your Name" required />
-        <input type="email" name="email" [(ngModel)]="email" placeholder="Your Email" required />
-        <textarea name="message" [(ngModel)]="message" placeholder="What's on your mind?" required></textarea>
-        <button type="submit" [disabled]="!contactForm.form.valid">{{ sent ? 'Message Sent!' : 'Send Message' }}</button>
-      </form>
-      <div *ngIf="sent" class="thank-you-msg">Thanks for reaching out! I'll get back to you soon.</div>
+<section class="portfolio-wrapper">
+  <div class="page-intro">
+    <h2 class="page-title">Let's Connect!</h2>
+    <div class="page-divider"></div>
+  </div>
+  
+  <div class="content-container">
+    <div class="flex-center">
+      <div class="unified-card contact-form">
+        <h4>💬 Drop Me a Message</h4>
+        <form (ngSubmit)="sendMessage()" #contactForm="ngForm">
+          <input type="text" name="name" [(ngModel)]="name" placeholder="Your Name" required />
+          <input type="email" name="email" [(ngModel)]="email" placeholder="Your Email" required />
+          <textarea name="message" [(ngModel)]="message" placeholder="What's on your mind?" required></textarea>
+          <button type="submit" [disabled]="!contactForm.form.valid">{{ sent ? 'Message Sent!' : 'Send Message' }}</button>
+        </form>
+        <div *ngIf="sent" class="thank-you-msg">Thanks for reaching out! I'll get back to you soon.</div>
+      </div>
     </div>
   </div>
 </section>
