@@ -2,7 +2,7 @@
 
 A clean, modern, and responsive **Angular portfolio** to showcase my skills, projects, resume, and contact information.
 
-🔗 **Live Demo**: [https://moorthy-22.github.io/Portfolio_V/](https://moorthy-22.github.io/Portfolio_V/)
+🔗 **Live Demo**: [https://pvinayagamoorthyy.github.io/Portfolio/](https://pvinayagamoorthyy.github.io/Portfolio/)
 
 ---
 
